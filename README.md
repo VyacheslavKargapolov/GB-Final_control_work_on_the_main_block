@@ -28,3 +28,63 @@
 - Методы и их описание
 
 - Результаты выполнения программы.
+
+
+
+### КОД
+
+using System;
+using static System.Console;
+
+
+/*-----------метод1------созданние массива---------------*/
+string[] GetArrayFromString(string elements)
+{
+    string[] rezult = elements.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+    return rezult;
+}
+
+
+/*-----------метод2------созданние нового массива---------------*/
+
+string[] GetNewArray(string[] arr, int b)
+{
+     string [] rez = new string[b] ;
+     int j = 0;
+     for (int i = 0; i< arr.Length; i++)
+     {
+         if (arr[i].Length <=3)
+         {
+             rez[j] = arr[i];
+             j++;
+         }
+     }
+     return rez;
+}
+
+/*-----------метод3------определение длинны нового массива нового массива---------------*/
+
+int CountElement(string[] arr)
+{
+    int count = 0;
+    for(int i=0; i < arr.Length; i++)
+        if (arr[i].Length <=3) count++;
+    return count;
+}
+
+
+/*-----------Основная программа---------------*/
+
+Clear();
+Write("Введите числа через пробел: ");
+string element = Console.ReadLine();
+string[] array = GetArrayFromString(element);
+int size = CountElement(array);
+string[] array2 = GetNewArray(array);
+WriteLine();
+WriteLine($"[{String.Join(", ", array)}]");
+
+
+Write($"[{String.Join(", ", array)}]  --->  ");
+WriteLine($"[{String.Join(", ", array2)}]");
+WriteLine();
